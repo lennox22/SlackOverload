@@ -33,5 +33,20 @@ namespace SlackOverload.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        public IActionResult LoginForm()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Login(string username)
+        {
+            DAL.CurrentUser = username;
+            return RedirectToAction("index");
+        }
+        public IActionResult Logout()
+        {
+            DAL.CurrentUser = null;
+            return RedirectToAction("index");
+        }
     }
 }

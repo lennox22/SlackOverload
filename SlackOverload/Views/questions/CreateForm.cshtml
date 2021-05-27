@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "CreateForm";
+}
+
+<h1>Poll the Audience</h1>
+<br /><br />
+<form method="post" action="/questions/create">
+    <table>
+        <tbody>
+            <tr>
+                <td>Question Title: </td>
+                <td><input type="text" name="title" size="50" /></td>
+            </tr>
+            <tr>
+                <td>Categories/Tags: </td>
+                <td><input type="text" name="tags" class="col-sm-12 col-md-4" /></td>
+            </tr>
+            <tr>
+                <td>Question Details: </td>
+                <td><textarea type="text" name="details" cols="75" rows="5"></textarea></td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="hidden" />
+    <input type="submit" />
+</form>
+

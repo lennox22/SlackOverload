@@ -1,0 +1,30 @@
+﻿@model questions
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h1>@Model.title</h1><br />
+<h3>@Model.details</h3><br />
+posted by @Model.username on @Model.posted<br />
+@if(Model.status == 0)
+            {
+                <span>Not Closed</span>
+            }
+            else
+            {
+                <span>Closed</span>
+            }
+<br /><br />
+<h3>Answers</h3><br />
+@foreach (answers a in ViewBag.answers)
+{
+    if(a.qid == Model.id)
+                {
+                    @a.details<br />
+                              <span>posted by </span>@a.username
+                    <span>on </span>@a.posted<br />
+                    <span>upvoted </span>@a.upvotes
+                    <span>times</span><br /><br />
+                }
+}
+
