@@ -411,3 +411,8 @@ C:\Users\lbrown4\dev\Week12\week12project\SlackOverload\obj\Debug\netcoreapp3.1\
 C:\Users\lbrown4\dev\Week12\week12project\SlackOverload\obj\Debug\netcoreapp3.1\Razor\Views\questions\Detail.cshtml.g.cs
 C:\Users\lbrown4\dev\Week12\week12project\SlackOverload\obj\Debug\netcoreapp3.1\Razor\Views\questions\CreateForm.cshtml.g.cs
 C:\Users\lbrown4\dev\Week12\week12project\SlackOverload\obj\Debug\netcoreapp3.1\Razor\Views\Home\LoginForm.cshtml.g.cs
+C:\Users\lbrown4\dev\Week12\week12project\SlackOverload\obj\Debug\netcoreapp3.1\Razor\Views\questions\DeleteWarning.cshtml.g.cs
+C:\Users\lbrown4\dev\Week12\week12project\SlackOverload\obj\Debug\netcoreapp3.1\Razor\Views\questions\EditForm.cshtml.g.cs
+C:\Users\lbrown4\dev\Week12\week12project\SlackOverload\obj\Debug\netcoreapp3.1\Razor\Views\answers\CreateForm.cshtml.g.cs
+C:\Users\lbrown4\dev\Week12\week12project\SlackOverload\obj\Debug\netcoreapp3.1\Razor\Views\answers\EditForm.cshtml.g.cs
+C:\Users\lbrown4\dev\Week12\week12project\SlackOverload\obj\Debug\netcoreapp3.1\Razor\Views\answers\DeleteWarning.cshtml.g.cs

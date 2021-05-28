@@ -33,14 +33,18 @@ namespace SlackOverload.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        public IActionResult LoginForm()
+        public IActionResult LoginForm(string error)
         {
-            return View();
+            return View(error);
         }
         [HttpPost]
         public IActionResult Login(string username)
         {
             DAL.CurrentUser = username;
+            if(DAL.CurrentUser != null)
+            {
+                DAL.loginerror = null;
+            }
             return RedirectToAction("index");
         }
         public IActionResult Logout()

@@ -23,6 +23,11 @@ namespace SlackOverload.Controllers
         }
         public IActionResult CreateForm()
         {
+            if(DAL.CurrentUser == null)
+            {
+                DAL.loginerror = "Please First Login";
+                return Redirect("/home/loginform");
+            }
             return View();
         }
         [HttpPost]
@@ -30,8 +35,52 @@ namespace SlackOverload.Controllers
         {
             q.posted = DateTime.Now;
             q.status = 0;
+            q.username = DAL.CurrentUser;
             DAL.CreateQ(q);
-            return RedirectToAction("/index");
+            return Redirect("/questions");
+        }
+        public IActionResult Upvote(int id)
+        {
+            int qid = DAL.UpvoteA(id);
+            return RedirectToAction($"detail/{qid}");
+        }
+        public IActionResult DeleteWarning(int id)
+        {
+            questions q = DAL.GetOneQuestion(id);
+            List<answers> a = DAL.GetSomeAnswers(id);
+            ViewBag.AnswerCount = a.Count;
+            return View(q);
+        }
+        public IActionResult DeleteQ(int id)
+        {
+            questions q = DAL.GetOneQuestion(id);
+            DAL.DeleteQ(q);
+            return Redirect("/questions");
+        }
+        public IActionResult CloseQ(int id)
+        {
+            questions q = DAL.GetOneQuestion(id);
+            DAL.CloseQ(q);
+            return Redirect($"/questions/detail/{id}");
+        }
+        public IActionResult OpenQ(int id)
+        {
+            questions q = DAL.GetOneQuestion(id);
+            DAL.OpenQ(q);
+            return Redirect($"/questions/detail/{id}");
+        }
+        public IActionResult EditForm(int id)
+        {
+            questions q = DAL.GetOneQuestion(id);
+            return View(q);
+        }
+        public IActionResult Edit(questions q)
+        {
+            q.posted = DateTime.Now;
+            q.status = 0;
+            q.username = DAL.CurrentUser;
+            DAL.EditQ(q);
+            return Redirect("/questions");
         }
     }
 }

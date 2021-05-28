@@ -1,0 +1,27 @@
+﻿@model answers
+@{
+    ViewData["Title"] = "DeleteWarning";
+}
+
+<h1 style="color:red; border-top: 4px solid red; border-bottom: 4px solid red; display:inline">Delete Warning</h1>
+<br />
+<br />
+<h3>@Model.details</h3>
+posted by @Model.username on @Model.posted
+<br />
+<span>Upvoted @Model.upvotes times</span>
+<br />
+<br />
+<h4 style="color:red">Are you sure you want to delete this answer?</h4>
+
+<br />
+<br />
+<table width="100%" style="text-align:center">
+    <tbody>
+        <tr>
+            <td><a href="/answers/deletea/@Model.id" class="btn btn-danger">Yes, Delete</a></td>
+            <td><a href="/questions/detail/@Model.qid" class="btn btn-light">No, Go Back</a></td>
+        </tr>
+    </tbody>
+</table>
+

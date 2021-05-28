@@ -6,10 +6,23 @@
 <h1>Choose Your Own Adventure</h1>
 <br />
 <h3>Have a question? Then <a href="/questions/createform">make your own destiny</a>!</h3>
-<br /><br />
+<br />
+<br />
 @foreach (questions entry in Model)
 {
-    <span style="font:bold"><a href="/questions/detail/@entry.id">@entry.title</a></span><br />
+    <span style="font:bold"><a href="/questions/detail/@entry.id">@entry.title</a></span>
+    <br />
     <span style="font:75%">posted on @entry.posted</span>
-    <br /><br />
+    <br />
+
+    if (entry.status == 0)
+    {
+        <span style="font:300">Question still open</span>
+    }
+    else
+    {
+        <span style="font:300">Question closed</span>
+    }
+    <br />
+    <br />
 }

@@ -1,0 +1,24 @@
+﻿@model int
+@{
+    ViewData["Title"] = "CreateForm";
+}
+
+<h1>Everyone has an Answer!</h1>
+<br />
+<h3>@ViewBag.details</h3>
+<br />
+<form method="post" action="/answers/create">
+    <table>
+        <tbody>
+           
+            <tr>
+                <td>Answer Details: </td>
+                <td><textarea type="text" name="details" cols="75" rows="5" required></textarea></td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="hidden" name="qid" value="@Model" />
+    <input type="hidden" name="upvotes" value="0" />
+    <input type="submit" />
+</form>
+

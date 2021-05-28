@@ -3,28 +3,71 @@
     ViewData["Title"] = "Detail";
 }
 
-<h1>@Model.title</h1><br />
-<h3>@Model.details</h3><br />
-posted by @Model.username on @Model.posted<br />
-@if(Model.status == 0)
-            {
-                <span>Not Closed</span>
-            }
-            else
-            {
-                <span>Closed</span>
-            }
-<br /><br />
-<h3>Answers</h3><br />
+<h1>@Model.title</h1>
+<br />
+<h3>@Model.details</h3>
+<br />
+posted by @Model.username on @Model.posted
+@if (DAL.CurrentUser != null && (DAL.CurrentUser.ToLower() == "admin" || DAL.CurrentUser == Model.username))
+{
+    <span>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="/questions/editform/@Model.id" class="btn btn-light"> Edit </a>
+    </span>
+    <span>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        @if (Model.status == 0)
+        {
+            <a href="/questions/closeq/@Model.id" class="btn btn-light">Close Question</a>
+        }
+        else
+        {
+            <a href="/questions/openq/@Model.id" class="btn btn-light">Open Question</a>
+
+        }
+    </span>
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/questions/deletewarning/@Model.id" class="btn btn-danger">Delete</a></span>
+
+}
+<br />
+@if (Model.status == 0)
+{
+    <span>Not Closed</span>
+<br />
+<br />
+
+<h3>Answers&nbsp; &nbsp; &nbsp; &nbsp;<a href="/answers/createform/@Model.id" class="btn btn-light">Submit New Answer</a></h3>
+}
+else
+{
+    <span>Closed</span><br /><br />
+    <h3>Answers</h3>
+}
+<br />
 @foreach (answers a in ViewBag.answers)
 {
-    if(a.qid == Model.id)
-                {
-                    @a.details<br />
-                              <span>posted by </span>@a.username
-                    <span>on </span>@a.posted<br />
-                    <span>upvoted </span>@a.upvotes
-                    <span>times</span><br /><br />
-                }
+    if (a.qid == Model.id)
+    {
+        @a.details
+        <br />
+        <span>posted by </span>@a.username
+        <span>on </span>@a.posted
+        <br />
+        <span>upvoted </span>@a.upvotes
+        <span>times</span><span>&nbsp; &nbsp; &nbsp; &nbsp;</span>
+        <a href="/answers/upvote/@a.id" class="btn btn-outline-primary">Upvote</a>
+        <span>&nbsp; &nbsp; &nbsp; &nbsp;</span>
+        @if (DAL.CurrentUser != null && (DAL.CurrentUser.ToLower() == "admin" || DAL.CurrentUser == a.username))
+        {
+            <span>
+                
+                <a href="/answers/editform/@a.id" class="btn btn-light"> Edit </a>
+            </span>
+            
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/answers/deletewarning/@a.id" class="btn btn-danger">Delete</a></span>
+        }
+        <br />
+        <br />
+    }
 }
 

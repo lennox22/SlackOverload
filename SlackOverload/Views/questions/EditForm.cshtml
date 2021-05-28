@@ -1,0 +1,30 @@
+﻿@model questions
+@{
+    ViewData["Title"] = "EditForm";
+}
+
+<h1>Edit Your Inquiry</h1>
+
+<br />
+<br />
+
+<form method="post" action="/questions/edit/@Model.id">
+    <table>
+        <tbody>
+            <tr>
+                <td>Question Title: </td>
+                <td><input type="text" name="title" size="50" value="@Model.title" required /></td>
+            </tr>
+            <tr>
+                <td>Categories/Tags: </td>
+                <td><input type="text" name="tags" class="col-sm-12 col-md-4" value="@Model.tags" required /></td>
+            </tr>
+            <tr>
+                <td>Question Details: </td>
+                <td><textarea type="text" name="details" cols="75" rows="5" required>@Model.details</textarea></td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="submit" />
+</form>
+
