@@ -18,5 +18,6 @@ namespace SlackOverload.Models
         public DateTime posted { get; set; }
         public int upvotes { get; set; }
 
+
     }
 }

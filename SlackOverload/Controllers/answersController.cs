@@ -11,7 +11,8 @@ namespace SlackOverload.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            List<answers> a = DAL.GetAllAnswers();
+            return View(a);
         }
         public IActionResult Upvote(int id)
         {
@@ -59,5 +60,6 @@ namespace SlackOverload.Controllers
             DAL.DeleteA(a);
             return Redirect($"/questions/detail/{a.qid}");
         }
+        
     }
 }

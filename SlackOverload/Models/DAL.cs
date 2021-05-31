@@ -14,6 +14,7 @@ namespace SlackOverload.Models
         public static IDbConnection db;
         public static string CurrentUser;
         public static string loginerror;
+        public static string qSearch;
         //db actions
         public static List<questions> GetAllQuestions()
         {
@@ -74,6 +75,16 @@ namespace SlackOverload.Models
         public static void DeleteA(answers a)
         {
             db.Delete<answers>(a);
+        }
+        public static List<questions> GetTaggedQ()
+        {
+            List<questions> q = db.Query<questions>($"select * from questions where tags like '%{Home.qSearch}%' order by posted desc;").ToList();
+            return q;
+        }
+        public static List<answers> GetAllAnswers()
+        {
+            List<answers> a = db.Query<answers>("select * from answers order by posted, upvotes desc;").ToList();
+            return a;
         }
     }
 }

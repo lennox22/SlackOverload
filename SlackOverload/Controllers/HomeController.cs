@@ -52,5 +52,13 @@ namespace SlackOverload.Controllers
             DAL.CurrentUser = null;
             return RedirectToAction("index");
         }
+        [HttpPost]
+        public IActionResult Search()
+        {
+            //Home.qSearch = "music";
+            string search = Request.Form["qSearch"].First();
+            List<questions> q = DAL.GetTaggedQ();
+            return View(q);
+        }
     }
 }

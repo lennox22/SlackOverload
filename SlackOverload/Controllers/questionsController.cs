@@ -82,5 +82,13 @@ namespace SlackOverload.Controllers
             DAL.EditQ(q);
             return Redirect("/questions");
         }
+        [HttpPost]
+        public IActionResult Search()
+        {
+            //Home.qSearch = "music";
+            string search = Request.Form["qSearch"].First();
+            List<questions> q = DAL.GetTaggedQ();
+            return View(q);
+        }
     }
 }

@@ -1,0 +1,26 @@
+﻿@model List<answers>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Recent Answers</h1>
+
+<br /><br />
+<table>
+    <tbody>
+
+@foreach (answers entry in Model)
+{
+        <tr style="border-bottom: 2px solid black">
+            <td>
+                <div>@entry.username posted on @entry.posted with @entry.upvotes upvotes</div>
+                
+                <div>@entry.details</div>
+            </td>
+            <td><a href="/questions/detail/@entry.qid" class="btn btn-outline-primary">See the Question</a><br /><br /></td>
+        </tr>
+        
+}
+    </tbody>
+</table>
+
