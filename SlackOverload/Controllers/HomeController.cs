@@ -53,9 +53,9 @@ namespace SlackOverload.Controllers
             return RedirectToAction("index");
         }
         [HttpPost]
-        public IActionResult Search()
+        public IActionResult Search(string qSearch)
         {
-            //Home.qSearch = "music";
+            Home.qSearch = qSearch;
             string search = Request.Form["qSearch"].First();
             List<questions> q = DAL.GetTaggedQ();
             return View(q);

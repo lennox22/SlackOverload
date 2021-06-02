@@ -4,10 +4,10 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome To The Thunderdome</h1>
-    <p><form method="post" action="/questions/search"><label for="qSearch">Question Search: </label> <input class="col-sm-6 col-md-6" type="search" name="qSearch" /></form></p>
-    <form asp-controller="home" asp-action="search" method="post">
-        @Html.TextBox("qSearch")
-        <button type="submit">submit</button>
+    
+    <form asp-controller="Home" asp-action="Search" method="post">
+        <input type="search" name="qSearch" class="col-sm-6 col-md-6" value="search question tags"/>
+        
     </form>
 </div>
 <br /><br /><br /><br />
